@@ -1,6 +1,40 @@
-@FraudOps.Api_HostAddress = http://localhost:5041
+@host = http://localhost:5041
 
-GET {{FraudOps.Api_HostAddress}}/weatherforecast/
-Accept: application/json
+### 1. Normal transaction (should NOT be flagged)
+POST {{host}}/api/transactions
+Content-Type: application/json
 
-###
+{
+  "accountId": "ACC-1001",
+  "amount": 250.00,
+  "merchant": "Woolworths",
+  "location": "Durban"
+}
+
+### 2. Large amount (should raise a High alert)
+POST {{host}}/api/transactions
+Content-Type: application/json
+
+{
+  "accountId": "ACC-1001",
+  "amount": 15000.00,
+  "merchant": "Electronics Store",
+  "location": "Durban"
+}
+
+### 3. Location change within 10 minutes (should raise a Medium alert)
+POST {{host}}/api/transactions
+Content-Type: application/json
+
+{
+  "accountId": "ACC-1001",
+  "amount": 300.00,
+  "merchant": "Petrol Station",
+  "location": "Johannesburg"
+}
+
+### 4. List all transactions
+GET {{host}}/api/transactions
+
+### 5. List all alerts
+GET {{host}}/api/alerts

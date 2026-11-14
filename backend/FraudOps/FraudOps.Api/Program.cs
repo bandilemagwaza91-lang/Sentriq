@@ -1,4 +1,4 @@
-
+using FraudOps.Api.Services;
 namespace FraudOps.Api
 {
     public class Program
@@ -6,6 +6,7 @@ namespace FraudOps.Api
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            builder.Services.AddSingleton<IFraudDetectionService, FraudDetectionService>();
 
             // Add services to the container.
 
