@@ -15,8 +15,8 @@ Work in progress. Setup is complete and the backend foundation is under way.
 
 - [x] Repository, Android project and ASP.NET Core API created
 - [x] Backend models and DTOs
-- [ ] Fraud detection service and rules
-- [ ] API controllers
+- [x] Fraud detection service and rules
+- [x] API controllers
 - [ ] Android screens
 - [ ] App and API connected
 - [ ] Database
